@@ -94,7 +94,7 @@ impl Lexer {
 
     fn read_identifier(&mut self) -> String {
         let start_position = self.position;
-        while self.ch.is_ascii_alphanumeric() {
+        while let b'a'..=b'z' | b'A'..=b'Z' | b'0'..=b'9' | b'_' = self.ch {
             self.read_char();
         }
         self.input[start_position..self.position].into()
